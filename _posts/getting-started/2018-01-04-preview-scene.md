@@ -36,11 +36,11 @@ dcl start
 
 Каждый раз когда вы вносите изменения в вашу сцену, предпросмотр подхватывает эти изменения и обновляет сцену автоматически, так что вам не нужно запускать эту команду снова.
 
-## Preview a remote scene
+## Предпросмотр удаленной сцены
 
-To preview a remote scene you must first start a WebSockets server in your local machine. To do this:
+Для предпросмотра удаленной сцены вам необходимо запустить сервер  WebSockets на вашем компьютере. Чтобы это сделать:
 
-From the scene directory run the following bash commands:
+Запустите следующие команды в директории с вашей сценой:
 
 ```bash
 cd server
@@ -55,34 +55,34 @@ npm start
 # now the port is running
 ```
 
-Note that when the server is running, the command informs you what port that the server is running on, take note of this. It will probably be 8087.
+Как только веб-сервер запустится, команда покажет вам на каком порту он запущен, запомните его. Скорее всего это будет порт 8087.
 
-Check that the _scene.json_ file in your scene has the same websocket port set up, otherwise change the file so that it matches the local server you're running.
+Убедитесь что именно этот порт указан в файле_scene.json_ в качестве порта websocket, если нет - поменяйте его на тот порт, на котором запустился сервер.
 
-Once the websocket server is up and the scene is properly pointing at it, fire up the preview as you would with a local scene.
+Когда websocket сервер запущен и сцена настроена для работы с ним, вы можете запустить предпросмотр этой сцены локально, на вашем компьютере.
 
-From the scene directory run the following bash command:
+Запустите эту команду из директории со сценой:
 
 ```bash
 dcl start
 ```
 
-Any missing dependencies are installed and then the CLI opens the scene in a new browser tab automatically.
+Все необходимые зависимости будут установлены автоматически, после чего будет открыто окно браузера с вашей сценой.
 
-You can point other browser tabs to the same local address and this will add new users to the scene. User's aren't able to see other avatars in the preview, but they can see a marker representing other users. If the actions of a user affect the scene state, which is hosted on the server, all users should see the effects of this.
+Вы так-же можете открыть свою сцену в других вкладках браузера для имитации других пользователей. Пользователи не будут видеть аватары друг друга в предпросмотре, однако они будут видеть маркер, обозначающий другого пользователя. Если действия какого-то пользователя влияют на сцену, которая запущена на сервере, все пользователи должны увидеть эти изменения.
 
-> Note: Currently, the preview of remote scenes doesn't automatically update changes to the scene as local scenes do. Each time you make changes, you must run the build and start commands for the server again. It's advisable to start building a scene as local and only move its code to a remote scene once it's mostly complete.
+> Примечание: На данный момент предпросмотр удаленных сцен не делает автоматического обновления сцены при ее изменении, как это происходит для локальных сцен. Каждый раз, когда вы вносите изменения, вы должны перезапускать сервер. Мы советуем начинать разработку с локальной сцены и только потом делать ее удаленной, когда сама сцена практически готова.
 
-## Upload a scene to decentraland
+## Загрузка сцены в Decentraland
 
-Once you're happy with your scene, you can upload it and publish it to Decentraland, see [publishing]({{ site.baseurl }}{% post_url /getting-started/2018-01-07-publishing %}) ) for instructions on how to do that.
+Когда ваша сцена вас полностью устраивает, вы можете загрузить и опубликовать ее в Decentraland, читайте про [публикацию]({{ site.baseurl }}{% post_url /getting-started/2018-01-07-publishing %}) ), чтобы узнать, как это сделать.
 
-## Parameters of the preview command
+## Параметры команды предпросмотра
 
-You can add the following flags to the `dcl start` command to change its behavior:
+Вы можете задать следующие параметры команде `dcl start`, для изменения поведения по умолчанию:
 
-- `--no-browser` to prevent the preview from opening a new browser tab.
-- `--port` to assign a specific port to run the scene. Otherwise it will use whatever port is available.
+- `--no-browser` команда не будет автоматически запускать веб-браузер.
+- `--port` задаст определенный порт, на котором будет запущена сцена. Если параметр не указан, сцена будет запущена на одном из свободных портов.
 
 <!--
 Seems to be removed:
@@ -90,29 +90,29 @@ Seems to be removed:
 - `--skip` to skip the confirmation prompt.
 -->
 
-> To preview old scenes that were built for older versions of the SDK, you must install the latest versions of the `decentraland-api` and `decentraland-rpc` packages in your project. Check the CLI version via the command `dcl -v`
+> Для просмотра старых сцен, которые создавались для старой версии SDK вам нужно поставить последние версии пакетов `decentraland-api` и `decentraland-rpc`. Для того, чтобы проверить текущую версию запустите команду `dcl -v`
 
-## Basic usage of the scene preview
+## Как пользоваться предпросмотром сцены
 
-Running a preview provides some useful debugging information and tools to help you understand how the scene is rendered. The preview mode provides indicators that show parcel boundaries and the orientation of the scene.
+В режиме предпросмотра выводится ряд полезной информации для отладки, так же доступны различные инструменты, которые помогают понять процесс отрисовки сцены. В режиме предпросмотра вы будете видеть границы сцены, а так же ее ориентацию в пространстве.
 
-When viewing a preview, you can press the Esc key to disengage the mouse and use it normally.
+Для выхода из режима предпросмотра вы можете нажать клавишу Esc, вы снова сможете пользоваться мышкой, как обычно.
 
-If your scene outputs messages to console (using `console.log()`) you can view these messages as they are generated by opening the JavaScript console of your browser. For example, when using Chrome you access this through `View > Developer > JavaScript console`.
+Если ваша сцена пишет какую-либо информацию в консоль (с помощью `console.log()`), вы можете просматривать эти сообщения в JS консоли вашего браузера. Например, в браузере Chrome вы можете открыть ее через `View > Developer > JavaScript console` (или просто нажав F12 и перейдя во вкладку консоль)
 
-The upper-left corner of the preview informs you of the following:
+В верхнем левом углу будет отображаться дополнительная информация:
 
-- _FPS_ : frames per second
-- _MS_ : network ping delay in milliseconds
-- _MB_ : memory usage in megabytes
+- _FPS_ : количество кадров в секунду
+- _MS_ : задержка ping в милисекундах
+- _MB_ : использование памяти в мегабайиах
 
-Click on the graph to switch through these metrics.
+Нажмите на график для переключения между этими величинами.
 
-## Preview scene size
+## Предпросмотр размера сцены
 
-The scene size shown in the preview is based on the scene's configuration, you set this when building the scene using the CLI. By default, the scene occupies a single parcel (10 x 10 meters).
+Размер сцены в режиме предпросмотра зависит от ее параметров, которые вы установили при инициализации сцены в CLI. ПО умолчанию размер сцены равен одному участку (10 x 10 метров).
 
-If you're building a scene to be uploaded to an estate that occupies more parcels than the preview shows, you can edit the _scene.json_ file to reflect this, listing multiple parcels in the "parcels" field.
+Если вы создаете сцену для загрузки на площадку, состоящую из нескольких участков (estate), тогда вы можете отредактировать файл _scene.json_ в соответствии с этим указав несколько учасков в поле "parcels".
 
 ```json
  "scene": {
@@ -126,43 +126,43 @@ If you're building a scene to be uploaded to an estate that occupies more parcel
   },
 ```
 
-## Debug a scene
+## Отладка сцены
 
-If the scene can't be compiled, the scene in your browser will be rendered as a large white box that occupies the entire space of the scene.
+Если движок не может отрисовать вашу сцену, то вы увидите болшой белый куб, занимающий все пространство сцены.
 
-If this occurs, there are several places where you can look for error messages to help you understand what went wrong:
+Если это произошло, есть несколько мест, где вы сможете найти журнал ошибок, чтобы понять что же пошло не так:
 
-1.  Check your code editor to make sure that it didn't mark any syntax or logic errors.
-2.  Check the output of the command line where you ran `dcl start`
-3.  Check the JavaScript console in the browser for any other error messages. For example, when using Chrome you access this through `View > Developer > JavaScript console`.
-4.  If you're running a preview of a remote scene, check the output of the other command line window, where you ran `npm start` to start the server.
+1.  Проверьте ваш код на наличие синтаксических или логических ошибок.
+2.  Проверьте что выводит в консоль команда `dcl start`
+3.  Проверьте консоль JavaScript в вашем браузере на предмет ошибок. Например, в браузере Chrome вы можете открыть ее через `View > Developer > JavaScript console` (или просто нажав F12 и перейдя во вкладку консоль)
+4.  Если вы запускаете предпросмотр удаленной сцены, проверьте нет ли ошибок в консоли, в которой у вас запущена команда `npm start`, запускающая сервер.
 
-If your scene exceeds any of the [scene limitations]({{ site.baseurl }}{% post_url /development-guide/2018-01-06-scene-limitations %}), for example if there are too many triangles in it, the scene won't be rendered. If this occurs, a warning sign will be rendered in the space where your scene should be, detailing the problem.
+Если ваша сцена превышает какое-либо из [ограничений]({{ site.baseurl }}{% post_url /development-guide/2018-01-06-scene-limitations %}), установленных для сцен, например, если в сцене слишком много полигонов, то она не будет отрисована. В данном случае вы увидите ошибку в самом предпросмотре, на месте, где должен быть ваш объект.
 
-If an entity is located or extends beyond the limits of the scene, it will flash with red color to indicate this. Nothing in your scene can extend beyond the scene limits. This won't stop the scene from being rendered locally, but it will stop it from being deployed to Decentraland.
+Если объекты находятся вне сцены или выходят за ее границы, то они будут мигать красным цветом, чтобы сигнализировать об этом. Все объекты в вашей сцене должны укладываться в заданные лимиты. Хотя сцена и будет отрисована в локальном окружении, вы не сможете загрузить ее в Decentraland.
 
-You can also add `console.log()` and `console.trace()` commands to your code so that they print information to the JavaScript console.
+Вы так же можете добавить команды `console.log()` и `console.trace()` в ваш код, чтобы они выводили информацию для отладки в консоль JavaScript.
 
-You can also use the `sources` tab in the developer tools menu to add breakpoints and pause execution while you interact with the scene in real time.
+Вы так же можете использовать вкладку `sources` в инструментарии разработчика браузера для добавления точек останова и временной остановки кода в процессе тестирования вашей сцены.
 
-## View collision meshes
+## Предпросмотр collision meshes
 
-While viewing the preview, you can press `c` to view any collision meshes loaded in the glTF models of the scene. These are usually invisible, but determine where an avatar can move through, and where it can't.
+В режиме предпросмотра вы можете нажать клавишу  `c`  для просмотра collision meshes (границы объекта, через которые персонаж не может пройти) загруженные в модели glTF в вашей сцене. Обычно они не видимы и определяют где персонаж может ходить, а где - нет.
 
 ![](/images/media/collision-meshes.png)
 
-Collision meshes can be added to any model in an external 3D modeling tool like Blender. Large models like houses often include these, they are usually a lot simpler geometrically than the original shape, as this implies much less computational requirements. Stairs typically use a simplified collision mesh like a ramp to make it easier to climb, otherwise a character would have to jump up every step.
+Collision meshes могуда быть добавлены в любую модель в программе для 3Д моделирования, такое как Blender. В большие модели, например здания, часто добавляют эти границы, делая их значительно проще, чем отрисовываемую часть, для улучшения производительности. Например, на лестнице не отрисовывают каждую ступеньку, а делают collision mesh в виде обычной наклонной плоскости и персонаж может просто зайти по этой лестнице, ему не нужно будет запрыгивать на каждую ступеньку.
 
-## View bounding boxes
+## Просмотр кубической границы объекта
 
-While viewing the preview, you can press `b` to view any bounding boxes. Bounding boxes show the space occupied by an entity, it's especially useful to see these when dealing with invisible entities.
+В режиме предпросмотра вы можете нажать `b` чтобы посмотреть куб, в границах которого находится отрисованный объект. Кубические границы показывают место, занимаемое объектом, что бывает особенно полезно для просмотра границ невидимых объектов..
 
-## Using the Ethereum test network
+## Использование тестовой сети Ethereum
 
-If your scene makes use of transactions over the Ethereum network, for example if it prompts you to pay a sum in MANA to open a door, you can avoid using real currency while previewing the scene.
+Если в вашей сцене вы используете транзакции в сети Ethereum, например вы требуете оплату в MANA для того, чтобы открыть дверь, необязательно использовать реальные токены в режиме предпросмотра.
 
-For this, you must use the _Ethereum Ropsten test network_ and transfer fake MANA instead. To use the test network you must set your Metamask Chrome extension to use the _Ropsten test network_ instead of _Main network_. You must also own MANA in the Ropsten blockchain, which you can acquire for free from Decentraland.
+Для этого следует использовать сеть _Ethereum Ropsten test network_ и переводить ненастоящие токены мана. Для использования тестовой сети, вам нужно в настройках расширения MetaMask выбрвть сеть _Ropsten test network_ вместо _Main network_. У вас так-же должны быть токены MANA в тестовом блокчейне Ropsten, которые можно получить бесплатно.
 
-To preview your scene using the test network, add the `DEBUG` property to the URL you're using to access the scene preview on your browser. For example, if you're accessing the scene via `http://127.0.0.1:8000/?position=0%2C-1`, you should set the URL to `http://127.0.0.1:8000/?DEBUG&position=0%2C-1`.
+Для предпросмотра сцены с использованием тестовой сети добавьте параметр `DEBUG` в адресную строку (URL) вашего браузера. Например, если ваша сцена доступна по адресу `http://127.0.0.1:8000/?position=0%2C-1`, то нужно добавить DEBUG, чтобы получилось `http://127.0.0.1:8000/?DEBUG&position=0%2C-1`.
 
-Any transactions that you accept while viewing the scene in this mode will only occur in the test network and not affect the MANA balance in your real wallet.
+Любые переводы валюты, которые вы совершите в режиме предпросмотра в этом случае будут происходить в тестовой сети, а не с настоящими токенами MANA.
