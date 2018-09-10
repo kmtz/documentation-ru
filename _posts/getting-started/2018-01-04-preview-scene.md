@@ -1,6 +1,6 @@
 ---
 date: 2018-01-01
-title: Preview your scene
+title: Предпросмотр сцены
 description: What you can see in a scene's preview
 redirect_from:
   - /documentation/preview-scene/
@@ -12,29 +12,29 @@ set_order: 3
 tag: introduction
 ---
 
-Once you have [built a new scene]({{ site.baseurl }}{% post_url /getting-started/2018-01-03-create-scene %}) ) or downloaded a [sample scene]({{ site.baseurl }}{% post_url /examples/2018-01-08-sample-scenes %}) ) you can preview it locally.
+Как только вы завершили [создание сцены]({{ site.baseurl }}{% post_url /getting-started/2018-01-03-create-scene %}) ) или загрузили [готовую сцену]({{ site.baseurl }}{% post_url /examples/2018-01-08-sample-scenes %}) ) вы можете запустить предпросмотр.
 
-## Before you begin
+## Прежде чем начать
 
-Please make sure you first install the CLI tools. In Mac OS, you do this by running the following command:
+Пожалуйста, убедитесь что вы уже установили консольные утилиты (CLI) Decentraland. В Mac OS, вы можете сделать это, запустив команду:
 
 ```bash
 npm install -g decentraland
 ```
 
-See the [Installation Guide]({{ site.baseurl }}{% post_url /getting-started/2018-01-01-installation-guide %}) for more details and specific instructions for Windows and Linux systems.
+Смотрите [инструкцию по установке]({{ site.baseurl }}{% post_url /getting-started/2018-01-01-installation-guide %}), чтобы получить больше информации и инструкции по установке в ОС Windows и Linux.
 
-## Preview a local scene
+## Предпросмотр локальной сцены
 
-To preview a local scene run the following command on the scene's main folder:
+Для предпросмотра локальной сцены запустите эту команду в директории с проектом:
 
 ```bash
 dcl start
 ```
 
-Any dependencies that are missing are installed and then the CLI opens the scene in a new browser tab automatically. It creates a local web server in your system and points the web browser tab to this local address.
+Все завимости, необходимые для запуска сцены, устанавливаются автоматически, после чего запустится окно браузера с предпросмотром. Эта команда запускает веб-сервер на вашем компьютере и браузер сразу открывает окно с нужным адресом.
 
-Every time you make changes to the scene, the preview reloads and updates automatically, so there's no need to run the command again.
+Каждый раз когда вы вносите изменения в вашу сцену, предпросмотр подхватывает эти изменения и обновляет сцену автоматически, так что вам не нужно запускать эту команду снова.
 
 ## Preview a remote scene
 

@@ -1,7 +1,7 @@
 ---
 date: 2018-01-01
 title: Coding scenes
-description: This set will help you understand how things work in the client and SDK of decentraland.
+description: Данный документ поможет вам разобраться с основами SDK проекта decentraland.
 redirect_from:
   - /documentation/introduction/
   - /docs/sdk-overview/
@@ -15,91 +15,90 @@ set: getting-started
 set_order: 4
 ---
 
-## The development tools
+## Средства разработки
 
-At a very high level, the **Decentraland Software Development Kit** (SDK) allows you to do the following:
+**Decentraland Software Development Kit** (SDK) позволяет вам делать следующее:
 
-- Generate a default _project_ containing a Decentraland scene, including all the assets needed to render and run your content.
-- Build, test, and preview the content of your scene locally in your web browser - completely offline, and without having to make any Ethereum transactions or own LAND.
-- Write TypeScript code using the Decentraland API to add interactive and dynamic behavior to the scene.
-- Upload the content of your scene to [IPFS](https://ipfs.io).
-- Link your LAND tokens to the IPFS URL of the content you have uploaded.
+- Сгенерировать базовый проект  _project_ , содержащий сцену Decentraland, включающую все небходимые элементы для отрисовки и последующего запуска.
+- Создавайте, тестируйте и просматривайте вашу сцену в веб-браузере - в локальном окружении, без необходимости делать транзакции в сети Ethereum, без необходимости владения участком земли (LAND).
+- Пишите на TypeScript, используя API Decentraland и добавляйте динамический контент в вашу сцену..
+- Загружайте ваш контент в [IPFS](https://ipfs.io).
+- Связывайте ваш земельный участок со ссылкой на ваш контент в IPFS.
 
-It includes the following components:
+SDK включает следующие компоненты:
 
-- **The Decentraland CLI** (Command Line Interface): Use it to generate new Decentraland scenes locally on your own machine, preview them and upload them to IPFS.
-- **The Decentraland API** (formerly known as _Metaverse API_ and still commonly referred to as _the API_): A TypeScript package containing the library of helper methods that allows you to create interactive experiences. Use it to create and manipulate objects in the scene and also to facilitate in-world transactions between users or other applications.
+- **The Decentraland CLI** (Command Line Interface): Используется для создания новых сцен Decentraland в локальном окружении у вас на компьютере, предпросмотра и загрузки в IPFS.
+- **The Decentraland API** (ранее известный как _Metaverse API_): Пакет TypeScript, содержащий методы, помогающие создавать интерактивное окружение. Используйте его для создания и манипуляции объектами в сцене, а так же для осуществления внутриигровых транзакций между пользователями и приложениями.
 
-- **Scene exapmples**: Take inspiration and coding best practices from the [sample scenes]({{ site.baseurl }}{% post_url /examples/2018-01-08-sample-scenes %}).
+- **Примеры сцен**: Используйте готовые сцены для обучения и изучения [примеров кода]({{ site.baseurl }}{% post_url /examples/2018-01-08-sample-scenes %}).
 
-## Requirements
+## Требования
 
-To develop a scene locally, you don't need to own LAND tokens. Developing and testing a scene can be done completely offline, without the need to deploy a scene to the Ethereum network (the system Decentraland uses to establish ownership of LAND), or IPFS (the P2P network we use for distribution and delivery of content).
+Для разработки сцены в локальном окружении на вашем компьютере вам не нужен собственный участок земли (LAND). Разработка и тестирование происходит в режиме офлайн, без необходимости загружать сцену в сеть Ethereum (система, используемая в Decentraland для управления своим земельным участком,  LAND), или IPFS (P2P сеть, используемая для распределения и доставки контента клиентам).
 
-This SDK is intended to be used by users that are comfortable working with code and a terminal. You must have the following:
+SDK создан для комфортного использования в терминале. У вас должны быть предустановлены следубщие пакеты:
 
-- **npm** (Node package manager): Used in the terminal to handle scene dependencies. [Download link](https://www.npmjs.com/)
+- **npm** (Node package manager): Используется в терминале для управления зависимостями . [Download link](https://www.npmjs.com/)
 
-- **A source code editor**: Helps you create scenes a lot faster and with less errors, as it marks syntax errors, autocompletes while you write and even shows you smart suggestions that depend on the context that you're in. Click on an object in the code to see the full definition of its class and what attributes it supports. We recommend [Visual Studio Code](https://code.visualstudio.com/) or [Atom](https://atom.io/).
+- **Редактор исходного кода**: Помогает вам создавать сцены быстро и с меньшим количеством ошибок, так как современные редакторы подсвечивают синтаксические ошибки, умеют автоматически дополнять код и даже показывают вам умные подсказки в зависимости от контекста. Нажмите на объект в коде и вы получите полное описание с методами и аттрибутами, доступными для этого объекта. Мы рекомендуем [Visual Studio Code](https://code.visualstudio.com/) или [Atom](https://atom.io/).
 
-- **The Decentraland CLI**: Used to build, preview and upload scenes. See [Installation guide]({{ site.baseurl }}{% post_url /getting-started/2018-01-01-installation-guide %})
+- **The Decentraland CLI**: Используется для создания и загрузки сцен. Смотрите [инструкцию по установке]({{ site.baseurl }}{% post_url /getting-started/2018-01-01-installation-guide %})
 
-## Supported languages and syntax
+## Поддерживаемые языки программирования и синтаксис
 
-#### TypeScript (recommended)
+#### TypeScript (рекомендуется)
 
-We use [TypeScript (.tsx)](https://www.typescriptlang.org/docs/handbook/jsx.html)
-to create our scenes.
+Мы используем [TypeScript (.tsx)](https://www.typescriptlang.org/docs/handbook/jsx.html)для создания сцен.
 
-TypeScript is a superset of JavaScript, so if you're familiar with JavaScript you'll find it's almost the same, but TypeScript allows you to employ object-oriented programming and type declarations. Features like autocomplete and type-checking speed up development times and allow for the creation of a solid codebase. These features are all key components to a positive developer experience.
+TypeScript - это расширение JavaScript, так что если вы знакомы с JavaScript, то вы увидите что они очень похожи, однако TypeScript подзоляет вам использовать объектно-ориентированное программирование и строгую типизацию. Дополнительные возможности, такие как автодополнение и проверка типов экономят время, потраченное на разработку и позволяют создавать более надежный и безопасный код. Эти возможности ялвяются ключевыми и помогают создавать более качественный конечный продукт.
 
-In a Typescript scene, you handle the entities that are rendered in the scene as embedded XML assets. This works a lot like the [React](https://reactjs.org/docs/hello-world.html) framework. This is why the scene's main file, _scene.tsx_ is a _.tsx_ rather than a _.ts_.
+В сцене Typescript вы работаете с объектами, которые представляют собой XML код, встроенный в эту сцену. Этот подход очень похож на [React](https://reactjs.org/docs/hello-world.html). Именно поэтому основной файл сцены _scene.tsx_ имеет расширение _.tsx_ ,а не _.ts_.
 
-> **Note:** Even though scenes are written in a way that intentionally looks a lot like React, **our SDK does not use React**.
+> **Примечание:** Несмотря на то, что код очень похож на код React, **наш SDK не использует React**.
 
-See [TypeScript tips]({{ site.baseurl }}{% post_url /development-guide/2018-01-08-typescript-tips %}) for best practices and recommendations for writing Decentraland scenes using TypeScript.
+Смотри [подсказки TypeScript]({{ site.baseurl }}{% post_url /development-guide/2018-01-08-typescript-tips %}) с примерами кода и рекомендациями для разработки в среде Decentraland.
 
 #### XML
 
-For scenes that only render montionless content and that won't be interactive, you can use [XML](https://en.wikipedia.org/wiki/XML).
+Для сцен, в которых используется статичный контент и в которых не будет никаких интерактивных действий, вы можете использовать [XML](https://en.wikipedia.org/wiki/XML).
 
-When building your scene with the CLI, select the option _Static_.
+При создании сцены из CLI выбирайте вариант _Static_.
 
-We encourage developers to instead build their scenes using TypeScript. TypeScipt scenes include embedded XML tags to handle the rendered entities. If you ignore all of the Typescript code in a _Basic_ scene and only edit what's inside the `render()` function, you're dealing with what's essentially XML but with slightly different syntax.
+Мы, в свою очередь, рекомендуем создавать сцены с помощью TypeScript. Сцены TypeScipt включают в себя встроенную разметку XML для описания объектов сцены. Если вы оставите нетронутым весь Typescript код в сцене _Basic_ и будете редактировать только содержимое функции  `render()`, фактически вы будете работать с тем-же XML, только со слегка измененным синтаксисом.
 
-#### Other languages
+#### Другие языки программирования
 
-You can use another tool or language instead of TypeScript and compile it into JavaScript, as long as your compiled scripts are contained within a single JavaScript file named _scene.js_. All provided type declarations are made in TypeScript, and other languages and transpilers are not officially supported.
+Вы можете использовать другие инструменты или языки вместо TypeScript и преобразовывать их в JavaScript, с условимем, что на выхоте у вас будет один файл с именем _scene.js_. Все преобразования типов производятся в TypeScript, другие языки и расширения JS официально не поддерживаются.
 
-## Scenes
+## Сцены
 
-The content you deploy to your LAND is called a **scene**. A scene is an interactive program that renders content, this could be a game, an interactive experience, an art gallery, whatever you want!
+Весь контент, который вы создаете для своего участка земли (LAND) называется **сцена**. Сцена - это интерактивная программа, которая отрисовывет содержимое сцены. Это может быть игра, некий интерактивный опыт, графическая галерея, да все что угодно!
 
-Scenes are deployed to **parcels**, the 10 meter by 10 meter pieces of virtual LAND, the scarce and non-fungible asset maintained in an Ethereum smart contract. These parcels of virtual space are where you will upload and interact with the content you create using the SDK.
+Сцены загружаются на участки земли (**parcels**), размером 10х10 метров, уникальные, невзаимозаменяемые цифровые активы, обслуживаемые смарт-контрактами сети Ethereum. Эти участки виртуального пространства - имеено та собственность, куда вы будете загружать контент, созданный с помощью SDK.
 
-We are developing the web client that will allow users to explore Decentraland. All of the content you upload to your LAND will be rendered and viewable through this client. We have included a preview tool in the SDK so that you can preview, test, and interact with your content in the meantime.
+Мы разрабатываем веб-клиент, который позволит всем пользователям исследовать мир Decentraland. Весь конткнт, который вы загрузите на ваш участок земли, будет отрисован и доступен с помощью этого клиента. Мы включили инструменты для предпросмотра в SDK, так что сейчас вы можете видеть, тестировать и опробовать ваш контент локально.
 
-## Entities and Components
+## Сущности и компоненты
 
-Entities are the basic unit for building everything in Decentraland scenes, think of them as the equivalent of Elements in a DOM tree in web development.
+Сущности - это простейшие элементы, которые вы можете использовать для построения сцен в Decentraland. Можно провести параллели в элементами DOM в веб-разработке.
 
-Three dimensional scenes in Decentraland are based on the [Entity-Component](https://en.wikipedia.org/wiki/Entity%E2%80%93component%E2%80%93system) model, where everything in a scene is an _entity_, and each entity can include _components_ that shape its characteristics and functionality.
+Трехмерные сцены в  Decentraland основаны на модели [Entity-Component](https://en.wikipedia.org/wiki/Entity%E2%80%93component%E2%80%93system), где каждый элемент сцены - это некая сущность (_entity_), а каждая сущность может включать компоненты (_components_) , которые описывают ее характеристики и функциональность.
 
-Entities are all of the assets that you include in your scenes that users will be able to render, view, and interact with from their web browser. These include 3D objects and audio files.
+Сущности - это все объекты, которые вы включаете в сцену, то, что в конечном итоге будет видеть пользователь и с чем он будет взаимодействовать в веб-браузере. В это понятие так же включены 3D объекты и аудио файлы.
 
-Components define the traits of an entity. For example, you can include the `color` component on an entity to set its color, or include the `lookAt` component to rotate it to face a certain point in space.
+Компоненты описывают поведение сущностей. Например, вы можете подключить компонент `color` для некой сущности для описания цвета, или добавить компонент `lookAt`, для вращения объекта, чтобы повернуть его к определенной точке в пространстве.
 
-> Note: The term _component_ as used in reference to this model differs greatly from how it's used in the _React_ ecosystem, where everything is considered a _component_. Throughout our documentation, we will use the term _component_ as used by the Entity-Component model.
+> Примечание: Термин _component_ , который мы используем в описании нашей модели, очень сильно отличается от компонента, который используется в экосистеме _React_, где все является компонентом (_component_). В нашей документации мы будем использовать термин _компонент_(_component_) именно в значении, определяемом в модели сущность-компонент (Entity-Component model).
 
-An entity can have other entities as children, these inherit the components from the parent. If a parent entity is positioned, scaled or rotated, its children are also affected. Invisible entities can also be used as wrappers that only exist to handle multiple entities as a group. Thanks to this, we can arrange entities into trees.
+Сущность может выступать родителем для других сущностей, в этом случае сущности-наследники будут наследовать и компоненты от своего родителя. Если родительский элемент позиционируется, у него меняется размер или он вращается, сущности-наследники так-же будут затронуты. Невидимые сущности так-же могут выступать в качестве объектов-оберток, существующих только для того, чтобы манипулировать группой объектов. Благодаря этому мы можем организовать древовидное наследование.
 
-For additional terms, definitions, and explanations, please refer to our [complete Glossary]({{ site.baseurl }}{% post_url /general/2018-01-03-glossary %}).
+Почитать подробнее о терминах, определениях и их толкованиях вы можете в нашем [глоссарии]({{ site.baseurl }}{% post_url /general/2018-01-03-glossary %}).
 
-See [Entity interfaces]({{ site.baseurl }}{% post_url /development-guide/2018-06-21-entity-interfaces %}) for a reference of all the available constructors for predefined entities and all of the supported components of each.
+Полная информация о доступных конструкторах для предопределенных сущностей и всех доступных компонентах доступна на странице с описаниями [интерфейсов сущностей (entity interfaces)]({{ site.baseurl }}{% post_url /development-guide/2018-06-21-entity-interfaces %}).
 
-## The Render function
+## Функция Render
 
-All [scene objects]({{ site.baseurl }}{% post_url /development-guide/2018-01-05-scriptable-scene %}) have a 'render()` method that outputs what users of your scene will see on their browser. This function must always output a hierarchical tree of entities that starts at the root level with a _scene_ entity.
+У всех [объектов сцены]({{ site.baseurl }}{% post_url /development-guide/2018-01-05-scriptable-scene %}) есть функция 'render()` - это метод, который отрисоывает контент, который в итоге увидят пользователи у себя в браузере. Эта функия должна возвращать иерархическую древовидную разметку, корневым элементом которой будет тэг _scene_.
 
 {% raw %}
 
@@ -130,27 +129,25 @@ All [scene objects]({{ site.baseurl }}{% post_url /development-guide/2018-01-05-
 
 {% endraw %}
 
-If you have game development experience with other tools, you might expect scenes to have some kind of render loop that periodically renders elements in the screen. Decentraland doesn't work like that. We built the API based on _events_, so the `render()` function is designed to update the scene in reaction to events rather than by querying the world repeatedly.
+Если у вас есть опыт разработки игр, то возможно вы ожидаете, что сцена непрерывно отрисовывается в цикле. В Decentraland используется другая схема. Наш API основан на _событиях_ (_events_), и метод `render()` обновляет сцену только после некоего события, то есть постоянной отрисовки не происходит.
 
-Scenes have a [state]({{ site.baseurl }}{% post_url /development-guide/2018-01-04-scene-state %}), which is a collection of variables that change over time and represent the current disposition of the scene. The state changes by the occurrence of [events]({{ site.baseurl }}{% post_url /development-guide/2018-01-03-event-handling %}) in the scene. When the state changes, this retriggers the rendering of the scene, using the new values of the state.
+У сцены есть [состояние]({{ site.baseurl }}{% post_url /development-guide/2018-01-04-scene-state %}), которое представляет собой набор переменных, которые меняются со временем и представляют собой текущее состояние сцены. Состояние сцены меняется в завимимости от [событий]({{ site.baseurl }}{% post_url /development-guide/2018-01-03-event-handling %}), происходящих в сцене. Когда состояние сцены изменяется, происходит вызов метода отрисовки с использованием новых значений переменных.
 
-This is inspired by the [React](https://reactjs.org/) framework, most of what you can read about React applies to decentraland scenes as well.
+Подобное поведение есть в [React](https://reactjs.org/), и бОльшая часть информации по React будет так же актуальна и для сцен Decentraland.
 
-## Scene Decoupling
+## Отделение сцен
 
-Your scenes don't run in the same context as the engine
-(a.k.a. the main thread), they might even not run in the same computer as the engine. We created the SDK in a way that is
-entirely decoupled from the rendering engine. We designed it to be like this for both safety and performance reasons.
+Ваши сцены запускаются в отдельном от основного движка контексте (a.k.a. основной поток), они могут даже быть запущены на другом компьютере, не на том, на котором запущен движок Decentralamd. Мы создали наш SDK таким образом, что сцена полностью отделена от движка отрисовки. Такое разделение сделано ради безопасности и быстродействия.
 
-The decoupling works by using RPC protocol, this protocol assigns a small part of the client to only render the scene and control events.
+Отделение работает на основе протокола RPC, этот протокол делигирует клиенту только отрисовку сцены и контроль за событиями в сцене.
 
-We have also abstracted the communication protocol. This allows us to run the scenes both locally in a WebWorker and remotely in a Node.js server through WebSockets.
+Мы так-же отделили протокол передачи данных. Это позволяет нам запускать сцены как в локальном окружении, так и удаленно, в окружении сервера Node.js с использованием WebSockets.
 
-We don't want developers to intervene with the internals of the engine or even need to know what lies inside the engine. We need to ensure a consistent experience for users throughout the Decentraland map, and mistakes are more likely to happen at that "low" level.
+Мы не хотим чтобы разработчикам приходилось разбираться с внетренностями движка, им даже не нужно знать как он работает изнутри. Мы должны убедиться, что конечный пользователь получит положительный опыт в мире Decentraland, и что "низкоуровневые" ошибки не будут их касаться
 
-#### Decoupling a scene from the engine
+#### Отделение сцены от движка
 
-Let's take a look at an example. Suppose you want to render a scene with the following content:
+Давайте рассмотрим пример. Предположим, что вы хотите отрисовать сцену, которая содержит следующий контент::
 
 {% raw %}
 
@@ -163,25 +160,24 @@ Let's take a look at an example. Suppose you want to render a scene with the fol
 
 {% endraw %}
 
-While writing your scene's code, you have no need to actually load the `a.gltf` model, and you don't need to know the geometry indexes used by the sphere entity. All you need to do is describe the scene at a higher level, like you do in XML.
+Описывая сцену вам не нужно загружать собственно сам файл модели `a.gltf`, вам не нужно знать геометрические координаты всех точек сферы. Все что вым нужно сделать - это описать саму модель в на языке высокого уровня, как вы это делаете в XML.
 
-Once the `render()` function sends this scene to the engine, the engine takes care of the positions, assets and geometries.
+Как только метод `render()` отправляет сцену движку для отрисовки, движок расчитывает все местоположения, элементы и их геометрию.
 
-To optimize performance, we only send the changes in the scene to the actual client, not the entire contents of it. So if the scene has a shoal of
-fish and only one of them moves, the API will send only that delta to the client, the one fish that moved. This makes things faster for the client and is completely transparent to the developer of the scene.
+Для оптимизации быстродействия, мы отправляем клиенту только изменения в сцене, не всю сцену полностью. Так, если в сцене есть косяк рыб и только одна из них движется, API отправит клиенту только то изменение, которое касается рыбы, которая двигалась. Благодаря этому изменения на стороне клиента происходят быстрее, а для разработчиков такой подход более прозрачен.
 
-## Taking Inspiration from React
+## Вдохновляясь кодом React
 
-One of the goals we had when designing our SDK was to reduce the learning curve as much as possible. We also wanted to incentive good practices and the writing of maintainable code, respecting the remote async-rpc constraints in every case.
+Одной из целей, которую мы ставили перед собой, при проектировании SDK было максимально облегчить процесс обучения для разработчиком. Мы так же хотели стимулировать разработчиков писать качественный, поддерживаемый код, который соответствует всем стандартам асинсхронного вызова.
 
-To make a long story short, we were considering two approaches for doing this:
+Итак, в кратце, существует два общепринятых способа добиться этого:
 
-- **the jQuery way**: tell the system how to handle entities, create, mutate and try to reach a desired state.
-- **the React way**: tell the system the desired state and let it figure out how to get there.
+- **путь jQuery**: мы говорим системе, как обрабытывать, создавать, изменять объекты и тем самым добиваемся желаемого результата.
+- **путь React**: мы говорим системе что мы в итоге хотим получить и позволяем ей самой все сделать за нас.
 
-#### The _jQuery_ way
+#### Путь _jQuery_ 
 
-If we had chosen the jQuery way (which we didn't), the code needed to create our example scene would look like this:
+Если бы мы выбрали путь jQuery (а мы его не выбрали), то код, который бы описывал нашу сцену выглядел бы примерно так:
 
 {% raw %}
 
@@ -205,12 +201,11 @@ EntityController.render(scene)
 
 {% endraw %}
 
-In this example, we're telling the system how to reach a desired state, the example (ab)uses mutations and
-side effects of how the code works to reach the desired state.
+В этом примере мы говорим системе какие действия нам нужно провести с объектом, чтобы добиться желаемого результата, например нам нужно описать изменения состояния, сторонние эффекты и т.д., чтобы в итоге получить желаемое.
 
-#### The _React_ way
+#### Путь _React_
 
-We chose to do things the [React](https://reactjs.org/) way, so our code for creating the same scene as above looks like this:
+Мы выбрали путь [React](https://reactjs.org/), так что нашу сцену мы опишем следующим кодом:
 
 {% raw %}
 
@@ -228,13 +223,13 @@ We chose to do things the [React](https://reactjs.org/) way, so our code for cre
 
 {% endraw %}
 
-In this example, we're just telling the system the desired state, instead of describing all of the logic to get to that state.
+В этом примере мы просто говорим системе, что мы хотим получить в итоге, не описывая всю логику приложения
 
-We made our SDK following the React approach, for several reasons:
+Мы создали наш SDK с использованием подхода React по следующим причинам:
 
-- It takes advantage of the evolution of web technologies that occurred in the past 10 years.
-- It's simpler to understand, it removes tons of boilerplate code that's not related to the business logic of the scene.
-- It's declarative. You describe **what** you want, not **how** you want that to happen.
-- It helps onboard developers that are already familiar with React.
-- The pattern is well known and well documented, getting help should be easy.
-- It has a low memory footprint and it makes it easy to do garbage collection.
+- Мы получили все преимущества эволюционирования веб-технологий за последние 10 лет
+- Значительно более простой для понимания код, нам не нужно задумываться о шаблонах, которые непосредственно не относятся к бизнес-логике в сцене.
+- Этот подход декларативен. Вы описываете **что** вы хотите получить, а не **как** вы добъетесь этого.
+- Он помогает быстро разобраться новым разработчикам, уже знакомым с React.
+- Этот подход хорошо известен, хорошо документирован и есть множество ресурсов, где можно почерпнуть информацию о нем.
+- Подход очень экономно использует память и облегчает работу сборщику мусора.

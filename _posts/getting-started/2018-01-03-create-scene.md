@@ -1,7 +1,7 @@
 ---
 date: 2018-01-01
-title: Creating your first scene
-description: Learn the basics of Decentraland scenes
+title: Создание первой сцены
+description: Изучаем основы создания сцен в Decentraland
 redirect_from:
   - /documentation/create-scene/
 categories:
@@ -12,55 +12,55 @@ set_order: 1
 tag: introduction
 ---
 
-In Decentraland, a scene is the representation of the content of an estate/LAND. All scenes are made up of [entities]({{ site.baseurl }}{% post_url /development-guide/2018-06-21-entity-interfaces %}), which represent all of the elements in the scene and are arranged into tree structures, very much like elements in a DOM tree in web development.
+В Decentraland сцена представляет собой весь контент на участке земли. Все сцены состоят из [сущностей (entities)]({{ site.baseurl }}{% post_url /development-guide/2018-06-21-entity-interfaces %}), которые в свою очередь представляют собой элементы сцены, организованные в древовидные структуры, аналогично тому, как это выглядит в дереве DOM в веб-разработке.
 
-## Install the CLI
+## Установка CLI
 
-Make sure you first install the CLI tools. In Mac OS, you do this by running the following command:
+Убедитесь что вы уже установили Decentraland. В Mac OS / Linux, вы можете сделать это с помощью этой команды:
 
 ```bash
 npm install -g decentraland
 ```
 
-See the [Installation Guide]({{ site.baseurl }}{% post_url /getting-started/2018-01-01-installation-guide %}) for more details and specific instructions for Windows and Linux systems.
+Смотрите [инструкцию по установке]({{ site.baseurl }}{% post_url /getting-started/2018-01-01-installation-guide %}) где вы найдете всю информацию по установке Decentraland для всех платформ.
 
-## Creating the file structure
+## Создание файловой структуры
 
-Use our CLI tool to automatically build the initial boilerplate scene. To do so, run `dcl init` in an empty folder.
+Используйте интерфейс командной строки (CLI) для автоматического создания шаблона сцены. Для этого запустите команду `dcl init` в пустом каталоге.
 
-The `dcl init` command creates a Decentraland **project** in your current working directory containing a **scene**. It prompts you to answer a series of optional questions about the scene's ownership and where in Decentraland to eventually upload it, then it asks you to select a scene template to start from. Depending on what you choose for this option, the CLI builds a different file structure with different default content.
+Команда `dcl init` создает **проект** Decentraland в текущей директории, содержащий вашу **сцену**. Команда потребует ввести ответы на ряд вопросов о сцене, таких как кто является владельцем и куда именно в Decentraland она будет загружена, затем вам нужно будет выбрать один из представленных шаблонов. В зависимости от того, что вы выберете, CLI создаст соответствующую структура файлов и каталогов с различным содержимым.
 
-There are four different scene templates that you can use as a starting point:
+Существуют различные шаблоны сцен, на данный момент вы можете использовать следующие:
 
-- **Basic scene**: Defined in a simple TypeScript file that renders a single glTF model.
-- **Interactive scene**: Defined in a TypeScript file featuring an example with a door that can be opened. This is the best template to start learning how to use the SDK. The scene features a basic state and handles click events. The scene state is stored locally in the user's browser, so a user's actions don't affect how other users see the scene rendered.
-- **Remote scene**: Defined in a TypeScript file featuring the same example used for the local scene, but it differs in that the scene state is stored in a remote server that it communicates with over WebSockets. Because of this, all users see the scene rendered identically. To test your scene, you can run both the server and the client locally.
-- **Static scene**: Defined in an **XML** file with a single glTF model. You can't add any dynamic or interactive content to this type of scene, it can only display static entities in place.
+- **Обычная сцена**: Определена в простом файле TypeScript, которыый отрисовывает отдну модель glTF.
+- **Интерактивная сцена**: Описана в файле TypeScript, в котором содержится пример с дверью, которую можно открыть. Лучше всего начать изучение SDK именно с этого шаблона. В этой сцене описывается основное состояние объекта и обрабатываются события нажатия на объект. Состояние сцены хранится локально, в браузере пользователя, так что действия пользователя отрисовываются только локально и не влияют на то, что увидят другие пользователи.
+- **Удаленная (remote) сцена**: Описана в файле TypeScript таким-же образом, как и интерактивная схема, с той разницей, что состояние хранится на удаленном сервере, связь с которым осуществляется через WebSockets. Поэтому все пользователи видят одно и то-же. Чтобы протестировать свою сцену вы можете запустить ее как через сервер, так и в локальном окружении.
+- **Статичная сцена**: Определена в файле **XML** с одной моделью glTF. Вы не можете добавить никакой динамический или интерактивный контент в статичную сцену, она может использоваться только для отрисовки статичного содержимого.
 
-See [scene contents]({{ site.baseurl }}{% post_url /development-guide/2018-01-11-scene-files %}) for an overview of the default files that are created in your scene.
+Смотри [содержимое сцены]({{ site.baseurl }}{% post_url /development-guide/2018-01-11-scene-files %}) для обзора основных файлов, которые создаются для сцены.
 
-## Preview your scene
+## Предпросмотр сцены
 
-To preview your rendered scene locally, run the following command on the scene's main folder:
+Для просмотра локальной сцены запустите эту команду в директории проекта:
 
 ```bash
 dcl start
 ```
 
-Every time you make changes to the scene, the preview reloads and updates automatically, so there's no need to run the command again.
+Каждый раз когда вы вносите изменения в вашу сцену, предпросмотр автоматически загружает изменения, так, чтобы не было нужны заново запускать команду.
 
-For more about what you can see in a scene preview, and instructions for how to run a preview of a remote scene, see [preview your scene]({{ site.baseurl }}{% post_url /getting-started/2018-01-04-preview-scene %}).
+Чтобы получить больше информации о предпросмотре сцены и о том, как запустить предпросмотр удаленной сцены смотрите раздел [предпросмотр сцены]({{ site.baseurl }}{% post_url /getting-started/2018-01-04-preview-scene %}).
 
-## Edit your scene
+## Редактирование сцены
 
-To edit scenes, we recommend using a source code editor like [Visual Studio Code](https://code.visualstudio.com/) or [Atom](https://atom.io/). An editor like this helps you create scenes a lot faster and with less errors, as it marks syntax errors, autocompletes while you write and even shows you smart suggestions that depend on the context that you're in. With Visual Studio Code you can even click on an object to see the full definition of its class.
+Для редактирования сцены мы рекомендуем использовать редактор кода, например [Visual Studio Code](https://code.visualstudio.com/) или [Atom](https://atom.io/). Такой редактор поможет вам в создании сцен значительно быстрее и с меньшим количеством ошибок, так как современные редакторы подсвечивают синтаксические ошибки, умеют автоматически дополнять код и даже показывают вам умные подсказки в зависимости от контекста. С помощью With Visual Studio Code вы можете даже кликнуть на объект и получить полное описание его класса.
 
-- In _Basic_ and _Interactive_ scenes, you create the logic of your scene by editing the _Scene.tsx_ file.
-- In _Remote_ scenes, you create the logic of your scene by editing the _RemoteScene.tsx_ file and the _State.tsx_.
-- In _Static_ scenes, you create the content of your scene in the _scene.xml_ file.
+- В _обычной_ and _интерактивных_ сценах, вы создаете логику вашей сцены в файле _Scene.tsx_.
+- В _удаленных_ сценах, вся логика сцены находится в файлах _RemoteScene.tsx_ и _State.tsx_.
+- В _статичных_ сценах, весь контент находится в файле _scene.xml_.
 
-See the [development guide]({{ site.baseurl }}{% post_url /development-guide/2018-01-21-scene-content %}) for simple instructions about adding content to your scene.
+Смотрите [руководство по разработке]({{ site.baseurl }}{% post_url /development-guide/2018-01-21-scene-content %}) с иснтрукциями о том, как добавить контент в вашу сцену.
 
-## Publish your scene
+## Публикация сцены
 
-Once you're done creating the scene and want to upload it to your LAND, see [publishing]({{ site.baseurl }}{% post_url /getting-started/2018-01-07-publishing %}).
+Как только вы закончили создание вашей сцены и хотите загрузить ее на ваш участок, вы можете [опубликовать ее]({{ site.baseurl }}{% post_url /getting-started/2018-01-07-publishing %}).
