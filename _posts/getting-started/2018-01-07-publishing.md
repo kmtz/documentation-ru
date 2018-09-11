@@ -1,7 +1,7 @@
 ---
 date: 2018-01-06
-title: Publishing the scene
-description: How to publish my project?
+title: Публикация сцены
+description: Как опубликовать мой проект?
 redirect_from:
   - /documentation/publishing/
 categories:
@@ -11,63 +11,63 @@ set: getting-started
 set_order: 7
 ---
 
-## Before you begin
+## Прежде чем начать
 
-Make sure of the following:
+Убедитесь что выполнены следующие условия:
 
-- Your scene's _scene.json_ file reflects the correct properties, including your Metamask public address, and the LAND parcels where you want to upload the scene.
+- Файл _scene.json_ вашей сцены заполнен корректно, включает верный публичный адрес Metamask, а так же адреса участков земли, на которые вы загружаете вашу сцену.
 
-> Note: The CLI prompts you to provide this information when creating the scene, but you can also modify the file manually at any time.
+> Примечание: При создании сцены консольная команда запросит эту информацию, но так же вы сможете поменять эти данные в любой момент.
 
-- Your scene complies with all of the [scene limitations]({{ site.baseurl }}{% post_url /development-guide/2018-01-06-scene-limitations %}). Most of these are validated each time you run a preview of your scene.
+- Ваша сцена должна соответствовать всем [ограничениям]({{ site.baseurl }}{% post_url /development-guide/2018-01-06-scene-limitations %}), накладываемым на сцены. Большинство из них проверяются каждый раз, когда вы запускаете предпросмотр.
 
-* You installed IPFS correctly. To do so, follow [these steps](https://ipfs.io/docs/install/).
+* Вы корректно установили IPFS. Чтобы сделать это [следуйте инструкции](https://ipfs.io/docs/install/).
 
-* You have a [Metamask](https://metamask.io/) account, with your LAND parcels assigned to it. The account must also hold a minimum amount of Ether to pay a transaction gas fee.
+* У вас есть кошелек [Metamask](https://metamask.io/), и ваши земельные участки находятся в нем. Так же в кошельке должно быть немного Эфира для оплаты газа за транзакцию.
 
-* You own the necessary amount of adjacent LAND parcels. Otherwise you can purchase LAND in the [Market]({{ site.baseurl }}{% post_url /blockchain-interactions/2018-01-01-marketplace %}).
+* У вас есть земельный участок / участки. Вы можете купить их в [Market'e]({{ site.baseurl }}{% post_url /blockchain-interactions/2018-01-01-marketplace %}).
 
-## To publish the scene
+## Публикация сцены
 
-1.  To make sure the scene has been locally built with your latest changes, run `npm run build`.
-2.  Log into your Metamask account with the same public address associated with your parcels in Decentraland. That public address should be listed in the scene's _scene.json_ file.
-3.  Start up an IPFS daemon by following [these instructions](https://ipfs.io/docs/getting-started/).
-4.  Finally, run `dcl deploy` from the scene's folder.
+1.  Убедитесь что вы применили все последние изменения, запустив команду `npm run build`.
+2.  Войдите в Metamask с тем аккаунтом, к которому привязаны ваши участки земли в Decentraland. Именно этот адрес должен быть в файлу _scene.json_ .
+3.  Запустите службу IPFS, для этого [следуйте инструкции](https://ipfs.io/docs/getting-started/).
+4.  Ну и наконец, запустите команду `dcl deploy` из директории с вашей сценой.
 
-If this is your first time uploading this scene to the selected parcels,Metamask will ask you to approve a transaction for paying the gas fee after the file upload is completed. You only make this payment the first time you deploy content, as the smart contract for your LAND is only updated when you link your content to IPNS, the naming service for IPFS.
+Если вы загружаете вашу сцену впервые, то Metamask запросит вас подтверждения транзакции для оплаты газа за перевод в сети Ethereum. Этот платеж взымается только в момент первой загрузки контента, т.к. смарт контракт для вашего участка земли обновляется только один раз, чтобы указать ссылку на контент в сети IPNS, сервисе имен для IPFS.
 
-This updates your parcel with your latest changes in addition to uploading your content to IPFS.
+В результате на ваш участок будут загружены последние изменения и контент в IPFS будет обновлен.
 
-Currently, as a measure to improve performance and your visitor's experience, your content will be pinned to Decentraland’s main IPFS server to ensure that the data needed to render your parcel is always readily available.
+На данный момент для улучшения производительности весь ваш контент будет находиться на главном IPFS сервере Decentraland, чтобы убедиться что все эти данные будут всегда доступны. Потом, с развитием проекта и появлением новых клиентов, необходимость в этом сервере отпадет.
 
-> Note: While this command deploys your scene to your parcel, remember that users can’t currently explore Decentraland, so your content won’t be discoverable “in-world”.
+> Примечание: Несмотря на то, что вы загружаете вашу сцену в Decentraland, помните, что пока что пользователи все равно не смогут ее увидеть, т.к. Decentraland еще не доступен для пользоваталей.
 
-## Publish from a physical Ledger device
+## Публикация из физического кошелька Ledger
 
-Instead of storing your LAND tokens in a Metamask account, you may find it more secure to store them in a [Ledger](https://www.ledger.com/) device that's phyisically plugged in to your computer.
+Вместо хранения ваших токентов LAND в аккаунте Metamask, вы можете хранить их и в более безопасном физическом кошельке [Ledger](https://www.ledger.com/), устройстве, которое подключается к вашему компьютеру.
 
-If you're using one of these, the process of uploading content to your LAND is slightly different.
+Если вы используете физический кошелек для криптовалют, то процесс загрузки будет немного отличаться.
 
-1.  To make sure the scene has been locally built with your latest changes, run `npm run build`.
-2.  Plug your Ledger device in. Your parcels in Decentraland should be associated with that same wallet. The same public address should be listed in the scene's _scene.json_ file.
-3.  Start up an IPFS daemon by following [these instructions](https://ipfs.io/docs/getting-started/).
-4.  Run `dcl deploy --https` from the scene's folder. This will open a tab on your browser where you need to confirm this action.
-    > Note: Currently, the certificate is self-signed, so your browser might give you a warning before launching the page. The warning is displayed only because the certificate is self-signed by your machine, please ignore it and carry on.
-5.  The Ledger device will then ask you for a confirmation, which you must give by pushing the device's buttons.
+1.  Убедитесь что вы применили все последние изменения, запустив команду `npm run build`.
+2.  Подключите ваше устройство Ledger. Ваши участки в Decentraland должны находиться в этом кошельке. Адрес этого кошелька должен быть указан в файле _scene.json_.
+3.  Запустите службу IPFS, для этого [следуйте инструкции](https://ipfs.io/docs/getting-started/).
+4.  Запустите команду `dcl deploy --https` в директории со сценой. Команда запустит веб-браузер, где вам нужно будет подтвердить ваше действие.
+    > Примечание: На текущий момент мы используем самоподписанный сертификат, так что ваш браузер выведет предупреждение о безопасности. Это предупреждение появляется потому, что это самоподписанный сертификат, который подписывает ваш же компьютер, пожалуйста игнорируйте это предупреждение.
+5.  Устройство Ledger затем запроси вас о подтверждении транзакции, вам нужно будет подтвердить ее нажатием кнопки вашего физического кошелька.
 
-## What is IPFS?
+## Что такое IPFS?
 
-[IPFS](https://ipfs.io/) (short for Inter-Planetary File System) is a hypermedia protocol and a P2P network for distributing files. The filesystem is content-addressed, meaning that each file is identified by its contents, not an arbitrary file name.
+[IPFS](https://ipfs.io/) (сокращение от Inter-Planetary File System) - это протокол передачи данных и сеть p2p для обмена файлами. В этой файловой системе используется адресация на основе содержимого файлов, значит каждый файл обозначается через его содержимое (хэш файла sha256), а не по имени файла.
 
-We use IPFS to host and distribute all scene content in a similar way to BitTorrent, keeping the Decentraland network distributed. For better performance, we run an “IPFS Gateway”, which means that Decentraland is hosting most of the content referenced from the blockchain (after certain filters are applied) to improve the experience of exploring the world.
+Мы используем IPFS для хранения и распределения содержимого всех сцен, приблизительно так, как это делает BitTorrent, что делает Decentraland децентрализованной системой. Для улучшения производительности мы запустили “шлюз IPFS” - то есть мы храним бОльшую часть контента из блокчейна на наших серверах (применяя определенные фильтры) для улучшения производительности и для удобства пользователей.
 
-In order to upload your files, you’ll need to run an IPFS node. After “pinning” your scene’s content (which means notifying the network that your files are available) our IPFS nodes will try to download the files using the IPFS network, eventually reaching your computer and copying over the files.
+Для того, чтобы загрузить ваши файлы, вы должны запустить у себя ноду IPFS. После того, как вы “прикрепили” содержимое вашей сцены (то есть, уведомили сеть, что ваши файлы доступны для раздачи) наши узлы сети IPFS попробуют загрузить ваши файлы из сети IPFS, то есть, загрузят файлы с вашего компьютера.
 
-To run an IPFS node, please follow [these instructions](https://ipfs.io/docs/getting-started/).
+Для запуска узла IPFS [следуйте инструкциям](https://ipfs.io/docs/getting-started/).
 
-#### What does IPFS have to do with my LAND?
+#### Что IPFS сделает с моим участком земли?
 
-IPFS serves two primary functions for Decentraland.
+IPFS выполняет две основные функции для Decentraland.
 
-1.  IPFS stores and distributes all of the assets required to render your scenes.
-2.  The `dcl deploy` command links these assets to the LAND parcel specified in your **scene.json** file. Whenever you redeploy your scene, the CLI will update your LAND smart contract, if needed, to point to the most recent content available on IPFS.
+1.  IPFS хранит и распростроняет все данные и файлы, необходимые для отрисовки вашей сцены.
+2.  Команда `dcl deploy` связывает эти данные с вашим участком земли, определенным в файле **scene.json**. Как только вы загружаете заново вашу сцену, утилита командной строки обновит смарт-контракт для участка вашей земли, если необходимо, чтобы указывать на актуальный контент в IPFS.
